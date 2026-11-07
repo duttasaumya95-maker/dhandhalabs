@@ -6,14 +6,6 @@ const schema = z.object({
   email: z.email().max(200),
   phone: z.string().refine((v) => /^[6-9]\d{9}$/.test(v.replace(/\D/g, "").replace(/^91/, "")), "Invalid Indian mobile number"),
   occupation: z.string().min(1).max(80),
-  age: z.string().max(3).optional(),
-  hasIdea: z.enum(["yes", "no"]),
-  idea: z.string().max(2000).optional(),
-  stage: z.enum(["exploring", "validating", "building", "launched"]),
-  goal: z.string().trim().min(20).max(2000),
-  preferredSchedule: z.string().max(300).optional(),
-  privacyConsent: z.literal(true),
-  marketingConsent: z.boolean(),
 });
 
 export async function POST(request: Request) {
