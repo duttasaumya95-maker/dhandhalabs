@@ -1,0 +1,12 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { ArrowRight, Check } from "lucide-react";
+import { PageShell } from "@/components/page-shell";
+import { Roadmap } from "@/components/roadmap";
+import { benefits, formatPrice, siteConfig } from "@/lib/config";
+
+export const metadata: Metadata = { title: "The Program", description: "Explore the 12-week business launch journey." };
+
+export default function ProgramPage() {
+  return <PageShell><section className="grid-noise py-20 sm:py-28"><div className="container-site"><p className="eyebrow orange">The AI-powered entrepreneurship program</p><h1 className="balance mt-6 max-w-5xl text-[clamp(3.4rem,8vw,7.6rem)] font-black leading-[.88] tracking-[-.07em]">Build Your Business. Hire AI. Launch in 90 Days.</h1><p className="mt-7 max-w-2xl text-xl font-bold leading-8 text-white/78">{siteConfig.tagline}</p><p className="mt-3 max-w-2xl leading-7 text-white/48">Move from idea to market with AI-assisted research, creation, automation, marketing, and operations—while human judgment stays in control.</p><div className="mt-10 grid gap-6 border-t border-white/10 pt-8 md:grid-cols-4">{[["12 weeks","Structured execution"],["3 phases","Validate, build, launch"],[formatPrice(siteConfig.price),"Founding program fee"],[siteConfig.programStart,"Next program"]].map(([a,b])=><div key={a}><p className="text-2xl font-black">{a}</p><p className="mt-2 text-sm text-white/45">{b}</p></div>)}</div></div></section><section className="bg-[#15161a] py-24"><div className="container-site"><Roadmap/></div></section><section className="paper py-24"><div className="container-site"><p className="eyebrow text-[#ff6b35]">What’s included</p><h2 className="section-title mt-5">A system for doing the work.</h2><div className="mt-12 grid gap-4 md:grid-cols-2">{benefits.map(([t,d])=><div key={t} className="card-light flex gap-4 p-6"><Check className="shrink-0 text-[#ff6b35]"/><div><h3 className="font-black">{t}</h3><p className="mt-2 text-sm leading-6 text-black/55">{d}</p></div></div>)}</div><div className="mt-12 rounded-[30px] bg-[#101114] p-8 text-white sm:p-12"><p className="eyebrow orange">{siteConfig.tagline}</p><h3 className="mt-4 text-4xl font-black tracking-[-.05em]">Start before you are forced to.</h3><p className="mt-4 text-white/55">Apply for the program. No payment is required at this stage.</p><Link href="/apply" className="button-primary mt-7">Start Your Application <ArrowRight size={18}/></Link></div></div></section></PageShell>;
+}

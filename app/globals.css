@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+:root {
+  --ink: #101114;
+  --charcoal: #1c1e24;
+  --paper: #f8f7f3;
+  --orange: #ff6b35;
+  --muted: #a8a8aa;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--ink); color: white; font-family: Arial, Helvetica, sans-serif; }
+a, button { -webkit-tap-highlight-color: transparent; }
+button, input, select, textarea { font: inherit; }
+::selection { background: var(--orange); color: var(--ink); }
+
+.container-site { width: min(1180px, calc(100% - 40px)); margin-inline: auto; }
+.eyebrow { font-size: .72rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
+.section-title { font-size: clamp(2.2rem, 5vw, 4.8rem); font-weight: 800; letter-spacing: -.055em; line-height: .98; }
+.balance { text-wrap: balance; }
+.text-muted { color: #a8a8aa; }
+.orange { color: var(--orange); }
+.paper { background: var(--paper); color: #171717; }
+.grid-noise {
+  background-image: linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+  background-size: 52px 52px;
+}
+.card-dark { border: 1px solid rgba(255,255,255,.1); background: rgba(255,255,255,.035); border-radius: 24px; }
+.card-light { border: 1px solid rgba(16,17,20,.12); background: #fff; border-radius: 24px; }
+.button-primary, .button-secondary { display: inline-flex; align-items: center; justify-content: center; gap: .55rem; min-height: 50px; padding: 0 1.25rem; border-radius: 999px; font-weight: 800; transition: .22s ease; }
+.button-primary { background: var(--orange); color: #111; box-shadow: 0 10px 34px rgba(255,107,53,.22); }
+.button-primary:hover { transform: translateY(-2px); background: #ff8158; }
+.button-secondary { border: 1px solid rgba(255,255,255,.22); color: white; }
+.button-secondary:hover { background: rgba(255,255,255,.08); }
+.focus-ring:focus-visible { outline: 3px solid rgba(255,107,53,.55); outline-offset: 3px; }
+
+@keyframes pulse-line { 0%,100% { opacity:.35 } 50% { opacity:1 } }
+.journey-line { animation: pulse-line 2.6s ease-in-out infinite; }
+
+@media (max-width: 640px) {
+  .container-site { width: min(100% - 28px, 1180px); }
+  .section-title { font-size: clamp(2.15rem, 13vw, 3.6rem); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
